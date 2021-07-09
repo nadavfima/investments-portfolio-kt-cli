@@ -3,10 +3,6 @@ package portfolio.cli.app
 import portfolio.cli.app.scraper.PortfolioScraper
 import java.time.LocalDateTime
 
-const val ANSI_RESET = "\u001B[0m"
-const val ANSI_RED = "\u001B[31m"
-const val ANSI_GREEN = "\u001B[32m"
-
 class PortfolioPrinter(private val scraper: PortfolioScraper) {
     fun print() {
 
@@ -25,8 +21,10 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
             .append("P/L".padEnd(12))
 
 
+
         println(builder.toString())
 
+        println()
 
         scraper.rows.forEach { printRow(it) }
 
@@ -51,28 +49,49 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
         val plAmount = it.plAmount?: ""
 
         val builder = StringBuilder()
+            // name
+            .append(ConsoleColors.WHITE_BOLD)
             .append(name.padEnd(30))
+            // average price
+            .append(ConsoleColors.RESET)
             .append(averagePrice.padEnd(12))
+            // amount
             .append(amount.padEnd(12))
+            // last price
             .append(lastPrice.padEnd(12))
+            // value
             .append(value.padEnd(12))
+            // daily pl percentage
+            .append(getColorForValue(dailyPlPercentage))
             .append(dailyPlPercentage.padEnd(12))
+            // pl percentage
+            .append(getColorForValue(plPercentage))
             .append(plPercentage.padEnd(12))
+            // pl amount
+            .append(getColorForValue(plAmount))
             .append(plAmount.padEnd(12))
-
-        val plAmountD = plAmount.replace(",", "").toDouble()
-
-        if (plAmountD > 0) {
-            builder.insert(0, ANSI_GREEN)
-        } else if (plAmountD < 0) {
-            builder.insert(0, ANSI_RED)
-        }
 
         println(builder.toString())
 
-
         // reset console color
-        print(ANSI_RESET)
+        print(ConsoleColors.RESET)
+
+    }
+
+    private fun getColorForValue(value: String): Any {
+        val doubleValue = value
+            .replace(",", "")
+            .replace(",", "")
+            .replace("%", "")
+            .toDoubleOrNull()
+
+        return when {
+            doubleValue == null -> ConsoleColors.RESET
+            doubleValue > 0 -> ConsoleColors.GREEN
+            doubleValue < 0 -> ConsoleColors.RED
+            else -> ConsoleColors.RESET
+        }
+
 
     }
 
