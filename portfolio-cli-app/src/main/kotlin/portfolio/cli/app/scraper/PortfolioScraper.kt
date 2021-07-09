@@ -19,8 +19,8 @@ abstract class PortfolioScraper
         // TODO - how to make it work for everyone? argument or file with chrome version?
         chromedriver.config().chromeVersion = "91"
         chromedriver.setup()
-        //    options.addArguments("--headless")
         val options = ChromeOptions()
+        options.addArguments("--headless")
         driver = ChromeDriver(options)
     }
 
