@@ -41,8 +41,11 @@ abstract class PortfolioScraper
 
         readEntirePortfolio()
 
-        driver.close()
+
     }
+
+    fun close() = driver.close()
+
     fun readEntirePortfolio() {
 
         println("Reading Portfolio")
