@@ -42,6 +42,8 @@ abstract class PortfolioScraper
         println("\n")
 
         scrapePortfolio()
+
+        driver.close()
     }
 
     // TODO - support 2FA for other websites?
