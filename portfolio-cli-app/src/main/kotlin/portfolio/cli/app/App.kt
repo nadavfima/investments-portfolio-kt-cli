@@ -16,8 +16,6 @@ object App {
 //    const val debugMode = true
 }
 
-//const val ANSI_RED = "\u001B[31m"
-//const val ANSI_GREEN = "\u001B[32m"
 
 fun main(args: Array<String>) {
     Logger.getGlobal().level = Level.WARNING
@@ -36,27 +34,13 @@ fun main(args: Array<String>) {
             return
         }
 
-        println(" ")
-        println(" ")
+        println("\n")
         println("Printing Portfolio")
+        println("\n")
 
-        scraper.rows.forEach {
+        PortfolioPrinter(scraper).print()
 
-            if (it.plAmount == null || it.plAmount.toDoubleOrNull() == 0.0){
-                println(it);
-                return
-            }
 
-            println(it);
-
-//            val plAmount = it.plAmount.toDouble()
-//
-//            if (plAmount > 0) {
-//                println("$ANSI_GREEN $it")
-//            } else if (plAmount < 0) {
-//                println("$ANSI_RED $it")
-//            }
-        }
     }
 
 
