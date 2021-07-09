@@ -65,7 +65,7 @@ abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
 
         title?.let {
             title.text?.let {
-                println("Found Open Position for ${title.text}")
+                println("Loading Position: ${title.text}")
             }
         }
 

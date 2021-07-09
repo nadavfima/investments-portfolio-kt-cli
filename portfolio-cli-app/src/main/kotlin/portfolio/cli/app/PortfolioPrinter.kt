@@ -3,18 +3,18 @@ package portfolio.cli.app
 import portfolio.cli.app.scraper.PortfolioScraper
 import java.time.LocalDateTime
 
-//const val ANSI_RED = "\u001B[31m"
-//const val ANSI_GREEN = "\u001B[32m"
+const val ANSI_RESET = "\u001B[0m"
+const val ANSI_RED = "\u001B[31m"
+const val ANSI_GREEN = "\u001B[32m"
 
 class PortfolioPrinter(private val scraper: PortfolioScraper) {
     fun print() {
 
-        println("\n")
-        println("Printing Portfolio")
-        println("\n")
+        println()
+        println("Portfolio Ready")
+        println()
 
         val builder = StringBuilder()
-//            .append("\u2066")
             .append("Name".padEnd(30))
             .append("Avg Cost".padEnd(12))
             .append("Amount".padEnd(12))
@@ -30,12 +30,12 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
 
         scraper.rows.forEach { printRow(it) }
 
-
-        println("\n")
+        println()
 
         println("Last Print: ${LocalDateTime.now()}")
 
-        println("\n")
+        println()
+
     }
 
     private fun printRow(it: PortfolioRow) {
@@ -51,7 +51,6 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
         val plAmount = it.plAmount?: ""
 
         val builder = StringBuilder()
-//            .append("\u2066")
             .append(name.padEnd(30))
             .append(averagePrice.padEnd(12))
             .append(amount.padEnd(12))
@@ -61,16 +60,19 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
             .append(plPercentage.padEnd(12))
             .append(plAmount.padEnd(12))
 
+        val plAmountD = plAmount.replace(",", "").toDouble()
+
+        if (plAmountD > 0) {
+            builder.insert(0, ANSI_GREEN)
+        } else if (plAmountD < 0) {
+            builder.insert(0, ANSI_RED)
+        }
 
         println(builder.toString())
 
-//            val plAmount = it.plAmount.toDouble()
-//
-//            if (plAmount > 0) {
-//                println("$ANSI_GREEN $it")
-//            } else if (plAmount < 0) {
-//                println("$ANSI_RED $it")
-//            }
+
+        // reset console color
+        print(ANSI_RESET)
 
     }
 

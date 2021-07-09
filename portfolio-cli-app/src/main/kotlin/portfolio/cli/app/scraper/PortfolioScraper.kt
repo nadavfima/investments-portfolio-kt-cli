@@ -47,6 +47,7 @@ abstract class PortfolioScraper
     fun close() = driver.close()
 
     fun readEntirePortfolio() {
+        rows.clear()
 
         println("Reading Portfolio")
         println("\n")
