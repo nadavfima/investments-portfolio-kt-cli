@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 abstract class PortfolioScraper
     () {
     protected val driver : ChromeDriver
-    abstract val portfolioPageUrl: String?
+    abstract val portfolioPageUrl: String
     val rows = mutableListOf<PortfolioRow>()
     abstract val name : String
 
@@ -39,6 +39,7 @@ abstract class PortfolioScraper
         enterPortfolio()
 
         println("Reading Portfolio")
+        println("\n")
 
         scrapePortfolio()
     }

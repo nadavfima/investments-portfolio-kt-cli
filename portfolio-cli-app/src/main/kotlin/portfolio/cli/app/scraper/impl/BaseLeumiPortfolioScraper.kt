@@ -11,13 +11,9 @@ import java.util.function.Supplier
 import java.util.logging.Level
 import java.util.logging.Logger
 
-class LeumiHebrewPortfolioScraper : PortfolioScraper() {
+abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
 
-    override val name: String
-        get() = "Leumi IL"
-
-    override val portfolioPageUrl: String
-        get() = "https://hb2.bankleumi.co.il/lti/lti-app/trade/portfolio"
+    abstract val holdingsTitle: String
 
     override fun login(credentials: LoginCredentials) {
 
@@ -36,11 +32,17 @@ class LeumiHebrewPortfolioScraper : PortfolioScraper() {
 
     override fun enterPortfolio() {
 
-        driver.findElement(By.linkText("אחזקות")).click()
+        // should already be in portfolio
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS)
+        if (!driver.currentUrl!!.contentEquals(portfolioPageUrl)) {
 
-        Thread.sleep(5000)
+            driver.findElement(By.linkText(holdingsTitle)).click()
+
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS)
+
+            Thread.sleep(5000)
+        }
+
 
     }
 
@@ -101,7 +103,7 @@ class LeumiHebrewPortfolioScraper : PortfolioScraper() {
     }
 
     private fun getNameElement(column: MutableList<WebElement>) =
-        column.first { it.getAttribute("class") == "tbl-cell PaperName paperName linkToPaperDetails ng-star-inserted" }
+        column.first { it.getAttribute("class").contains("paperName") }
             .findElement(By.tagName("span"))
 
     private fun getValueElement(column: MutableList<WebElement>) =
@@ -134,3 +136,4 @@ class LeumiHebrewPortfolioScraper : PortfolioScraper() {
 
 
 }
+
