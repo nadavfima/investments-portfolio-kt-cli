@@ -8,4 +8,4 @@ build/
 .idea/
 
 # Ignore Development Credentials File
-credentials
+*.cred
