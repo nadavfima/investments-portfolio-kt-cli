@@ -7,7 +7,7 @@ import java.nio.charset.Charset
 object LoginCredentialsLoader {
     fun load(): List<LoginCredentials> {
 
-        val file = File("credentials")
+        val file = File("portfolio.cred")
 
         println("Looking for credentials in: ${file.absolutePath}")
 
