@@ -20,7 +20,7 @@ abstract class PortfolioScraper
         chromedriver.config().chromeVersion = "91"
         chromedriver.setup()
         val options = ChromeOptions()
-        options.addArguments("--headless")
+//        options.addArguments("--headless", "--window-size=1920,1200")
         driver = ChromeDriver(options)
     }
 
@@ -34,6 +34,11 @@ abstract class PortfolioScraper
 
         login(credentials)
 
+        readEntirePortfolio()
+
+        driver.close()
+    }
+    fun readEntirePortfolio() {
         println("Entering Portfolio")
 
         enterPortfolio()
@@ -42,8 +47,6 @@ abstract class PortfolioScraper
         println("\n")
 
         scrapePortfolio()
-
-        driver.close()
     }
 
     // TODO - support 2FA for other websites?

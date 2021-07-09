@@ -17,6 +17,8 @@ abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
 
     override fun login(credentials: LoginCredentials) {
 
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS)
+
         val usernameField = driver.findElementById("uid");
         val passwordField = driver.findElementById("password");
 
@@ -25,24 +27,16 @@ abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
 
         driver.findElementById("enter").click()
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
+        // let login finish before we lookup the next element
+        Thread.sleep(10000)
 
-        Thread.sleep(5000)
     }
 
     override fun enterPortfolio() {
 
         // should already be in portfolio
 
-        if (!driver.currentUrl!!.contentEquals(portfolioPageUrl)) {
-
-            driver.findElement(By.linkText(holdingsTitle)).click()
-
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS)
-
-            Thread.sleep(5000)
-        }
-
+        driver.findElement(By.linkText(holdingsTitle)).click()
 
     }
 
