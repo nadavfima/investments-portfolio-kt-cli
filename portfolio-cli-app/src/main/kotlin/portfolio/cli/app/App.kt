@@ -11,7 +11,7 @@ import java.util.logging.Logger
 
 
 object App {
-    const val appName = "Open Portfolio Kotlin CLI"
+    const val appName = "Open-Source Investments Portfolio Kotlin CLI"
     const val version = "1.0.0"
 //    const val debugMode = true
 }
