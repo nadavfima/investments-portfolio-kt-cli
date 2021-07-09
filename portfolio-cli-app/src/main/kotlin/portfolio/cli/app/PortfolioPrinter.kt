@@ -12,7 +12,7 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
         val builder = StringBuilder()
 //            .append("\u2066")
             .append("Name".padEnd(30))
-            .append("Average Cost".padEnd(12))
+            .append("Avg Cost".padEnd(12))
             .append("Amount".padEnd(12))
             .append("Last Price".padEnd(12))
             .append("Value".padEnd(12))
