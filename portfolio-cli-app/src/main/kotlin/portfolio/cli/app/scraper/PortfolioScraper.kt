@@ -3,28 +3,33 @@ package portfolio.cli.app.scraper
 import portfolio.cli.app.PortfolioRow
 import portfolio.cli.app.credentials.LoginCredentials
 import io.github.bonigarcia.wdm.WebDriverManager
+import org.openqa.selenium.Point
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import java.util.concurrent.TimeUnit
 
 abstract class PortfolioScraper
     () {
-    protected val driver : ChromeDriver
+    lateinit var driver : ChromeDriver
     abstract val portfolioPageUrl: String
     val rows = mutableListOf<PortfolioRow>()
     abstract val name : String
 
     init {
+
+    }
+
+    fun start(credentials: LoginCredentials) {
+
         val chromedriver = WebDriverManager.chromedriver()
         // TODO - how to make it work for everyone? argument or file with chrome version?
         chromedriver.config().chromeVersion = "91"
         chromedriver.setup()
         val options = ChromeOptions()
-//        options.addArguments("--headless", "--window-size=1920,1200")
-        driver = ChromeDriver(options)
-    }
+        options.addArguments("--window-size=800,600");
 
-    fun start(credentials: LoginCredentials) {
+        driver = ChromeDriver(options)
+        driver.manage().window().position = Point(-2000, 0)
 
         driver.get(portfolioPageUrl)
 
