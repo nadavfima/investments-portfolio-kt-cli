@@ -4,7 +4,7 @@ A small project I did to be able to see my portfolio in a Terminal window.
 
 The scraper uses a Chrome Driver with Selenium in order to navigate and scrape the webpages.
 
-The `PortfolioScraper` class is abstract and can be implements for various websites/platforms.
+The `PortfolioScraper` class is abstract and can be implemented for additional websites/platforms.
 
 ## Installation Guide
 
