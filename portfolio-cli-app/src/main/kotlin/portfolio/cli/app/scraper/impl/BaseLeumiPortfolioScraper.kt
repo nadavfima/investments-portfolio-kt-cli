@@ -13,7 +13,6 @@ import java.util.logging.Logger
 
 abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
 
-    abstract val holdingsTitle: String
 
     override fun login(credentials: LoginCredentials) {
 
@@ -36,7 +35,10 @@ abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
 
         // should already be in portfolio
 
-        driver.findElement(By.linkText(holdingsTitle)).click()
+        driver.get(portfolioPageUrl)
+
+        Thread.sleep(10000)
+
 
     }
 

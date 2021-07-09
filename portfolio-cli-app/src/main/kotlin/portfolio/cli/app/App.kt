@@ -41,11 +41,13 @@ fun main(args: Array<String>) {
         while (true) {
             Thread.sleep(TimeUnit.MINUTES.toMillis(1))
 
+            scraper.enterPortfolio()
+
+            Thread.sleep(10000)
+
             scraper.readEntirePortfolio()
 
             PortfolioPrinter(scraper).print()
-
-
         }
 
 

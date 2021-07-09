@@ -29,6 +29,13 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
 
 
         scraper.rows.forEach { printRow(it) }
+
+
+        println("\n")
+
+        println("Last Print: ${LocalDateTime.now()}")
+
+        println("\n")
     }
 
     private fun printRow(it: PortfolioRow) {
@@ -56,12 +63,6 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
 
 
         println(builder.toString())
-
-        println("\n")
-
-        println("Last Print: ${LocalDateTime.now()}")
-
-        println("\n")
 
 //            val plAmount = it.plAmount.toDouble()
 //

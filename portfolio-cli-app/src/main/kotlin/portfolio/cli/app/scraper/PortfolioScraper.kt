@@ -28,7 +28,7 @@ abstract class PortfolioScraper
 
         driver.get(portfolioPageUrl)
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS)
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
 
         println("Logging In to $name")
 
@@ -39,9 +39,6 @@ abstract class PortfolioScraper
         driver.close()
     }
     fun readEntirePortfolio() {
-        println("Entering Portfolio")
-
-        enterPortfolio()
 
         println("Reading Portfolio")
         println("\n")
