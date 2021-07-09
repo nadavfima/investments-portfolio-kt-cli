@@ -6,6 +6,7 @@ package portfolio.cli.app
 
 import portfolio.cli.app.credentials.LoginCredentialsLoader
 import portfolio.cli.app.scraper.scraperIndex
+import java.util.concurrent.TimeUnit
 import java.util.logging.Level
 import java.util.logging.Logger
 
@@ -34,11 +35,18 @@ fun main(args: Array<String>) {
             return
         }
 
-        println("\n")
-        println("Printing Portfolio")
-        println("\n")
 
         PortfolioPrinter(scraper).print()
+
+        while (true) {
+            Thread.sleep(TimeUnit.MINUTES.toMillis(1))
+
+            scraper.readEntirePortfolio()
+
+            PortfolioPrinter(scraper).print()
+
+
+        }
 
 
     }

@@ -1,6 +1,7 @@
 package portfolio.cli.app
 
 import portfolio.cli.app.scraper.PortfolioScraper
+import java.time.LocalDateTime
 
 //const val ANSI_RED = "\u001B[31m"
 //const val ANSI_GREEN = "\u001B[32m"
@@ -8,6 +9,9 @@ import portfolio.cli.app.scraper.PortfolioScraper
 class PortfolioPrinter(private val scraper: PortfolioScraper) {
     fun print() {
 
+        println("\n")
+        println("Printing Portfolio")
+        println("\n")
 
         val builder = StringBuilder()
 //            .append("\u2066")
@@ -52,6 +56,12 @@ class PortfolioPrinter(private val scraper: PortfolioScraper) {
 
 
         println(builder.toString())
+
+        println("\n")
+
+        println("Last Print: ${LocalDateTime.now()}")
+
+        println("\n")
 
 //            val plAmount = it.plAmount.toDouble()
 //
