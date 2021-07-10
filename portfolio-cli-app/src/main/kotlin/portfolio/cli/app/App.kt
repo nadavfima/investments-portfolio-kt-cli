@@ -35,6 +35,10 @@ fun main(args: Array<String>) {
 
         scraper.start(credentials)
 
+        scraper.login(credentials)
+
+        scraper.readEntirePortfolio()
+
         if (scraper.rows.isEmpty()) {
             print("Could not find portfolio rows")
             return

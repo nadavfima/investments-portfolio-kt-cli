@@ -54,9 +54,6 @@ abstract class SeleniumPortfolioScraper : PortfolioScraper() {
 
         println("Logging In to $name")
 
-        login(credentials)
-
-        readEntirePortfolio()
 
 
     }

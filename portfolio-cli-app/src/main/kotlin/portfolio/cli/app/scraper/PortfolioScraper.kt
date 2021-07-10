@@ -30,9 +30,6 @@ abstract class PortfolioScraper() {
 
         onInitDone()
 
-        login(credentials)
-
-        readEntirePortfolio()
 
 
     }
