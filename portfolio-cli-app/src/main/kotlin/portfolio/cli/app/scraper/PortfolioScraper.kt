@@ -9,52 +9,26 @@ import org.openqa.selenium.chrome.ChromeOptions
 import portfolio.cli.app.ConsoleUtils
 import java.util.concurrent.TimeUnit
 
-abstract class PortfolioScraper
-    () {
-    lateinit var driver : ChromeDriver
-    abstract val portfolioPageUrl: String
+abstract class PortfolioScraper() {
+
     val rows = mutableListOf<PortfolioRow>()
-    abstract val name : String
+    abstract val name: String
 
     init {
 
     }
 
-    fun start(credentials: LoginCredentials) {
-        println()
-        println("==============================")
-        println("Starting Selenium Driver")
-        println("==============================")
-        println()
+    open fun init(){
 
-        val chromedriver = WebDriverManager.chromedriver()
-        // TODO - how to make it work for everyone? argument or file with chrome version?
-        chromedriver.config().chromeVersion = "91"
-        chromedriver.setup()
-        val options = ChromeOptions()
-        options.addArguments("--window-size=800,600");
+    }
 
-        // this doesn't work for my attempts with Leumi
-        // options.setHeadless(true)
-
-        driver = ChromeDriver(options)
-        driver.manage().window().position = Point(-2000, 0)
-
-        println()
-        println("==============================")
-        println("Selenium Driver Started")
-        println("==============================")
-        println()
-
-//        ConsoleUtils.clearConsole()
-
+    fun onInitDone(){
         println("Loading $name")
+    }
 
-        driver.get(portfolioPageUrl)
+    open fun start(credentials: LoginCredentials) {
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
-
-        println("Logging In to $name")
+        onInitDone()
 
         login(credentials)
 
@@ -63,7 +37,9 @@ abstract class PortfolioScraper
 
     }
 
-    fun close() = driver.close()
+    open fun close(){
+        rows.clear()
+    }
 
     fun readEntirePortfolio() {
         rows.clear()

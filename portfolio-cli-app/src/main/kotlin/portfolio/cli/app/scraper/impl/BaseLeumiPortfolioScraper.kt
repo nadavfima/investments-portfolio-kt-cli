@@ -5,13 +5,14 @@ import portfolio.cli.app.credentials.LoginCredentials
 import portfolio.cli.app.scraper.PortfolioScraper
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
+import portfolio.cli.app.scraper.SeleniumPortfolioScraper
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
 import java.util.function.Supplier
 import java.util.logging.Level
 import java.util.logging.Logger
 
-abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
+abstract class BaseLeumiPortfolioScraper : SeleniumPortfolioScraper() {
 
 
     override fun login(credentials: LoginCredentials) {

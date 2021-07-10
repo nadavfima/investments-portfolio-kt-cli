@@ -28,7 +28,12 @@ fun main(args: Array<String>) {
     credentialsList.firstOrNull()?.let { credentials ->
         val scraper = scraperIndex[credentials.scraper]
 
-        scraper!!.start(credentials)
+        // uncomment to test mock scraper
+        // val scraper = scraperIndex["mock"]
+
+        scraper!!.init()
+
+        scraper.start(credentials)
 
         if (scraper.rows.isEmpty()) {
             print("Could not find portfolio rows")
