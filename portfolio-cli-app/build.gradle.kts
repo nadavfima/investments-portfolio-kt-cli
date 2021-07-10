@@ -22,8 +22,7 @@ loggingCapabilities {
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-    maven("https://dl.bintray.com/kotlin/kotlinx/")
+    mavenCentral()
 
 }
 
@@ -41,7 +40,8 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
     // Use Kotlin CLI library
-    implementation("org.jetbrains.kotlinx", "kotlinx-cli", "0.2")
+    implementation("org.jetbrains.kotlinx", "kotlinx-cli", "0.3.2")
+    implementation("org.jetbrains.kotlinx", "kotlinx-cli-jvm", "0.3.2")
 
     // Use Selenium Chrome Driver
     implementation("org.seleniumhq.selenium", "selenium-chrome-driver", "3.141.59")
