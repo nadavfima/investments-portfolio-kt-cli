@@ -6,9 +6,7 @@ import java.time.LocalDateTime
 class PortfolioPrinter(private val scraper: PortfolioScraper) {
     fun print() {
 
-        println()
-        println("Portfolio Ready")
-        println()
+        ConsoleUtils.clearConsole()
 
         val builder = StringBuilder()
             .append("Name".padEnd(30))
