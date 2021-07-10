@@ -34,6 +34,9 @@ abstract class PortfolioScraper
         val options = ChromeOptions()
         options.addArguments("--window-size=800,600");
 
+        // this doesn't work for my attempts with Leumi
+        // options.setHeadless(true)
+
         driver = ChromeDriver(options)
         driver.manage().window().position = Point(-2000, 0)
 

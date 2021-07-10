@@ -18,13 +18,13 @@ abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS)
 
-        val usernameField = driver.findElementById("uid");
-        val passwordField = driver.findElementById("password");
+        val usernameField = driver.findElement(By.id("uid"));
+        val passwordField = driver.findElement(By.id("password"));
 
         usernameField.sendKeys(credentials.username)
         passwordField.sendKeys(credentials.password)
 
-        driver.findElementById("enter").click()
+        driver.findElement(By.id("enter")).click()
 
         // let login finish before we lookup the next element
         Thread.sleep(10000)
@@ -46,7 +46,7 @@ abstract class BaseLeumiPortfolioScraper : PortfolioScraper() {
         // TODO - support multiple pages portfolio
 
         // find portfolio table element
-        val tableBody = driver.findElementByCssSelector("div[class='tbl-body']")
+        val tableBody = driver.findElement(By.cssSelector("div[class='tbl-body']"))
 
         // find the children rows of the table
         val webRows = tableBody.findElements(By.xpath("*"))

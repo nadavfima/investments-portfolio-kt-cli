@@ -44,7 +44,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx", "kotlinx-cli-jvm", "0.3.2")
 
     // Use Selenium Chrome Driver
-    implementation("org.seleniumhq.selenium", "selenium-chrome-driver", "3.141.59")
+    implementation("org.seleniumhq.selenium", "selenium-chrome-driver", "4.0.0-beta-4")
 
     // Use Webdriver Manager for Selenium
     implementation("io.github.bonigarcia", "webdrivermanager", "4.4.3")
