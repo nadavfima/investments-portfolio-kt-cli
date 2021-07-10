@@ -48,5 +48,5 @@ jobs:
         with:
           name: portfolio-kt-cli-bin
           path: |
-          dist/portfolio-cli
-          dist/lib/portfolio-cli-app.jar
+            dist/portfolio-cli
+            dist/lib/
