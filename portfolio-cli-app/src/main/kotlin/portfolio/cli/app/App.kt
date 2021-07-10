@@ -25,7 +25,8 @@ fun main(args: Array<String>) {
 
     val credentialsList = LoginCredentialsLoader.load();
 
-    credentialsList.forEach { credentials ->
+    // TODO - handle multiple credentials in list
+    credentialsList.firstOrNull()?.let { credentials ->
         val scraper = scraperIndex[credentials.scraper]
 
         scraper!!.start(credentials)
@@ -34,8 +35,7 @@ fun main(args: Array<String>) {
             print("Could not find portfolio rows")
             return
         }
-
-
+        
         PortfolioPrinter(scraper).print()
 
         while (true) {
@@ -49,8 +49,6 @@ fun main(args: Array<String>) {
 
             PortfolioPrinter(scraper).print()
         }
-
-
     }
 
 
