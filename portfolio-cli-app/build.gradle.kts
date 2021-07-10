@@ -57,6 +57,7 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClassName = "portfolio.cli.app.AppKt"
+    version = "1.0.1"
 }
 
 val jar by tasks.getting(Jar::class) {

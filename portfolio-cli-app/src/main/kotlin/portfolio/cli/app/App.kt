@@ -12,9 +12,7 @@ import java.util.logging.Logger
 
 
 object App {
-    const val appName = "Open-Source Investments Portfolio Kotlin CLI"
-    const val version = "1.0.0"
-//    const val debugMode = true
+    const val appName = "Investments Portfolio Kotlin CLI"
 }
 
 
@@ -22,7 +20,7 @@ fun main(args: Array<String>) {
     Logger.getGlobal().level = Level.WARNING
 
     println()
-    println("${App.appName}:: ${App.version}")
+    println(App.appName)
 
     val credentialsList = LoginCredentialsLoader.load();
 
