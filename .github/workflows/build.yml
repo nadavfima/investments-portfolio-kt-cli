@@ -44,8 +44,7 @@ jobs:
           arguments: portfolio-cli-app:packageDistribution
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v2.2.0
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: portfolio-kt-cli-bin
-          path: |
-            dist/
+          path: dist/
