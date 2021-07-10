@@ -13,11 +13,16 @@ The `PortfolioScraper` class is abstract and can be implemented for additional w
 
 Coming Soon... maybe?
 
+
+## Existing Scrapers
+* Mock Scraper  
+* Leumi IL Hebrew
+* Leumi IL English
+
+
 ## Todo
 - [x] Create CLI
 - [x] Scraper Implementations
-    - [x] Leumi Hebrew
-    - [x] Leumi English
 - [x] Add Colors to Console
 - [x] Add README
 - [x] Add Screenshots
