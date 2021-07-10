@@ -47,4 +47,6 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: portfolio-kt-cli-bin
-          path: dist/
+          path: |
+            dist/portfolio-cli
+            dist/lib/
