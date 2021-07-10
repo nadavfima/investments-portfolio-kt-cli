@@ -21,6 +21,7 @@ object App {
 fun main(args: Array<String>) {
     Logger.getGlobal().level = Level.WARNING
 
+    println()
     println("${App.appName}:: ${App.version}")
 
     val credentialsList = LoginCredentialsLoader.load();
@@ -35,7 +36,7 @@ fun main(args: Array<String>) {
             print("Could not find portfolio rows")
             return
         }
-        
+
         PortfolioPrinter(scraper).print()
 
         while (true) {

@@ -8,7 +8,8 @@ object LoginCredentialsLoader {
     fun load(): List<LoginCredentials> {
 
         val file = File("portfolio.cred")
-
+        
+        println()
         println("Looking for credentials in: ${file.absolutePath}")
 
         val credentialsRaw = FileUtils.readFileToString(file, Charset.defaultCharset())

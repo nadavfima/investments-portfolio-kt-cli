@@ -6,6 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager
 import org.openqa.selenium.Point
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
+import portfolio.cli.app.ConsoleUtils
 import java.util.concurrent.TimeUnit
 
 abstract class PortfolioScraper
@@ -20,6 +21,11 @@ abstract class PortfolioScraper
     }
 
     fun start(credentials: LoginCredentials) {
+        println()
+        println("==============================")
+        println("Starting Selenium Driver")
+        println("==============================")
+        println()
 
         val chromedriver = WebDriverManager.chromedriver()
         // TODO - how to make it work for everyone? argument or file with chrome version?
@@ -30,6 +36,16 @@ abstract class PortfolioScraper
 
         driver = ChromeDriver(options)
         driver.manage().window().position = Point(-2000, 0)
+
+        println()
+        println("==============================")
+        println("Selenium Driver Started")
+        println("==============================")
+        println()
+
+//        ConsoleUtils.clearConsole()
+
+        println("Loading $name")
 
         driver.get(portfolioPageUrl)
 
@@ -50,7 +66,6 @@ abstract class PortfolioScraper
         rows.clear()
 
         println("Reading Portfolio")
-        println("\n")
 
         scrapePortfolio()
     }
